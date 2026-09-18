@@ -10,7 +10,7 @@ import { serviecSlotExist } from '../middlewares/serviceSlotMiddleware.js';
 import { validateCredentials } from '../middlewares/validateCredentianls.js';
 
 router.get('/services', getServices);
-router.post('/slots', getSlots);
+router.get('/slots', getSlots);
 router.post('/bookings', validateCredentials, serviecSlotExist, bookedASlot);
 
 export default router;

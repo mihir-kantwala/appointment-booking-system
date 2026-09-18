@@ -20,24 +20,21 @@ export const getServiceFromBackend = async () => {
 export const getSlotsFromBackend = async (serviceId, date) => {
   const [year, month, day] = date.split('-');
   const formatedDate = `${Number(day)}/${Number(month)}/${year}`;
-  // console.log(formatedDate);
-  const formData = {
-    serviceId,
-    date: formatedDate,
-  };
-  // console.log(formData);
+
+  console.log(serviceId, formatedDate);
 
   try {
-    const res = await fetch(`${API_URI}/slots`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const res = await fetch(
+      `${API_URI}/slots?serviceId=${serviceId}&date=${formatedDate}`,
+      {
+        method: 'GET',
       },
-      body: JSON.stringify(formData),
-    });
+    );
     // console.log(res);
 
     const data = await res.json();
+    console.log(data);
+
     // if (!data.ok) {
     //   throw new Error(data.message || 'Error fetching Services');
     // }

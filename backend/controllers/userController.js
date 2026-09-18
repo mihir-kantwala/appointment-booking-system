@@ -25,7 +25,7 @@ const getServices = async (req, res) => {
 
 const getSlots = async (req, res) => {
   try {
-    const { serviceId, date } = req.body;
+    const { serviceId, date } = req.query;
     const slots = await getAllSlots(serviceId, date);
     res.status(200).json({
       success: true,
